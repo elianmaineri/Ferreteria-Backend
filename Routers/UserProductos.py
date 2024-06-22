@@ -6,8 +6,8 @@ from typing import Optional, List
 from Config.database import Session
 from Models.Productos import Productos as ProductosModel
 from fastapi.encoders import jsonable_encoder
-#from middlewares.jwt_bearer import JWTBearer
-from Services.ProductosService import ProductosService
+from middlewares.jwt_bearer import JWTBearer
+from Services.ProductosServices import ProductosService
 from Schemas.ProductosSchemas import Productos
 
 
@@ -58,3 +58,6 @@ def delete_productos(id: int):
         return JSONResponse(status_code=404, content={"message":"Producto no encontrado"})
     ProductosService(db).delete_productos(id)
     return JSONResponse(status_code=200, content={"message":"Producto eliminado con exito"})
+
+
+
